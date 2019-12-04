@@ -48,13 +48,13 @@ jobs:
       #     SLACK_TITLE: 'Github Actions Error'
       #     SLACK_MESSAGE: 'PR test has been returning error!'
 
-      # - name: error notification to Slack
-      #   if: success()
-      #   uses: bryan-nice/slack-notification@master
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      #     SLACK_CHANNEL: times_kinoshita
-      #     SLACK_ICON: github
-      #     SLACK_USERNAME: Github Actions
-      #     SLACK_TITLE: 'PR Test has successed'
-      #     SLACK_MESSAGE: 'Test result has been returning error!'
+      - name: succeed notification to Slack
+        # if: success()
+        uses: bryan-nice/slack-notification@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: times_kinoshita
+          SLACK_ICON: github
+          SLACK_USERNAME: Github Actions
+          SLACK_TITLE: 'PR Test has successed'
+          SLACK_MESSAGE: 'Test result has been returning error!'
