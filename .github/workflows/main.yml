@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: run cat
-        run: cat README.md
+        run: cat README.m
         shell: bash
 
       # - name: deployment pending
@@ -46,7 +46,7 @@ jobs:
           SLACK_COLOR: '#cb2431'
           SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
           SLACK_USERNAME: Github Actions
-          SLACK_TITLE: PR Test ${{ process.env.GITHUB_WORKSPACE }}
+          SLACK_TITLE: PR Test ${{ env.GITHUB_WORKSPACE }}
           SLACK_MESSAGE: 'PR test has been returning error!'
 
       - name: succeed notification to Slack
@@ -58,5 +58,5 @@ jobs:
           SLACK_COLOR: '#3dc105'
           SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
           SLACK_USERNAME: Github Actions
-          SLACK_TITLE: PR Test ${{ process.env.GITHUB_WORKSPACE }}
+          SLACK_TITLE: PR Test ${{ env.GITHUB_WORKSPACE }}
           SLACK_MESSAGE: Test result has been returning SUCCESS!
