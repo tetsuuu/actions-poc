@@ -19,9 +19,9 @@ jobs:
 
       - name: run echo
         run: |
-          "echo ${GITHUB_REF}"
-          "echo ${{ GITHUB_REF }}"
-          "echo $GITHUB_REF"
+          echo $my_env_var
+        env:
+          my_env_var: ${{ GITHUB_REF }}
         shell: bash
 
       # - name: deployment pending
