@@ -18,7 +18,9 @@ jobs:
       #   shell: bash
 
       - name: run cat
-        run: "echo ${GITHUB_REF} ${{ GITHUB_REF }} $GITHUB_REF"
+        run: "echo ${GITHUB_REF}"
+        run: "echo ${{ GITHUB_REF }}"
+        run: "echo $GITHUB_REF"
         shell: bash
 
       # - name: deployment pending
