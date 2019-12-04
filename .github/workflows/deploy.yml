@@ -1,7 +1,7 @@
 name: actions notification
 
 on:
-  pull_request:
+  push:
     branches:
       - master
       - staging
@@ -14,14 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      # - name: run cat
-      #   run: cat README.md
-      #   shell: bash
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
+      - name: run cat
+        run: |
+          cat README.md
+          echo ${GITHUB_HEAD_REF}
+        shell: bash
 
       - name: run echo
         run: |
@@ -29,17 +26,13 @@ jobs:
           echo ${{ github.ref }}
           echo ${{ github.head_ref }}
           echo ${GITHUB_WORKSPACE}
-        shell: bash
 
-      - name: deployment pending
-        uses: deliverybot/deployment-status@v1
-        with:
-          state: 'pending'
-          token: '${{ github.token }}'
-
-      - name: Setup TypeScript
-        run: npm install typescript -g
-
+      # - name: deployment pending
+      #   uses: deliverybot/deployment-status@v1
+      #   with:
+      #     state: 'pending'
+      #     token: '${{ github.token }}'
+  
       # - name: deployment success
       #   if: success()
       #   uses: deliverybot/deployment-status@v1
