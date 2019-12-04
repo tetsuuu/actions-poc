@@ -37,19 +37,20 @@ jobs:
       #     state: 'failure'
       #     token: '${{ github.token }}'
 
-      # - name: error notification to Slack
-      #   if: failure()
-      #   uses: bryan-nice/slack-notification@master
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      #     SLACK_CHANNEL: times_kinoshita
-      #     SLACK_ICON: github
-      #     SLACK_USERNAME: Github Actions
-      #     SLACK_TITLE: 'Github Actions Error'
-      #     SLACK_MESSAGE: 'PR test has been returning error!'
+      - name: error notification to Slack
+        if: failure()
+        uses: bryan-nice/slack-notification@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: times_kinoshita
+          SLACK_COLOR: '#cb2431'
+          SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
+          SLACK_USERNAME: Github Actions
+          SLACK_TITLE: PR Test ${{ env.GITHUB_WORKSPACE }}
+          SLACK_MESSAGE: 'PR test has been returning error!'
 
       - name: succeed notification to Slack
-        # if: success()
+        if: success()
         uses: bryan-nice/slack-notification@master
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -57,5 +58,5 @@ jobs:
           SLACK_COLOR: '#3dc105'
           SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
           SLACK_USERNAME: Github Actions
-          SLACK_TITLE: PR Test ${{ GITHUB_WORKSPACE }}
+          SLACK_TITLE: PR Test ${{ env.GITHUB_WORKSPACE }}
           SLACK_MESSAGE: Test result has been returning SUCCESS!
