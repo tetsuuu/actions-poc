@@ -19,8 +19,8 @@ jobs:
 
       - name: run echo
         run: |
-          echo ${GITHUB_REF}
-        # shell: bash
+          echo ${GITHUB_HEAD_REF}
+        shell: bash
 
       # - name: deployment pending
       #   uses: deliverybot/deployment-status@v1
