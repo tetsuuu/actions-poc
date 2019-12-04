@@ -18,6 +18,11 @@ jobs:
       #   run: cat README.md
       #   shell: bash
 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
       - name: run echo
         run: |
           echo ${GITHUB_HEAD_REF}
@@ -31,11 +36,6 @@ jobs:
         with:
           state: 'pending'
           token: '${{ github.token }}'
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
 
       - name: Setup TypeScript
         run: npm install typescript -g
