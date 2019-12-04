@@ -22,6 +22,8 @@ jobs:
         run: |
           echo ${GITHUB_HEAD_REF}
           echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
+          echo ${GITHUB_WORKSPACE}
         shell: bash
 
       # - name: deployment pending
