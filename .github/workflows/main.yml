@@ -1,0 +1,60 @@
+name: actions notification
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  aws_cdk:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: run cat
+        run: cat README.md
+        shell: bash
+
+      # - name: deployment pending
+      #   uses: deliverybot/deployment-status@v1
+      #   with:
+      #     state: 'pending'
+      #     token: '${{ github.token }}'
+  
+      # - name: deployment success
+      #   if: success()
+      #   uses: deliverybot/deployment-status@v1
+      #   with:
+      #     state: 'success'
+      #     token: '${{ github.token }}'
+  
+      # - name: deployment failure
+      #   if: failure()
+      #   uses: deliverybot/deployment-status@v1
+      #   with:
+      #     state: 'failure'
+      #     token: '${{ github.token }}'
+
+      # - name: error notification to Slack
+      #   if: failure()
+      #   uses: bryan-nice/slack-notification@master
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: times_kinoshita
+      #     SLACK_ICON: github
+      #     SLACK_USERNAME: Github Actions
+      #     SLACK_TITLE: 'Github Actions Error'
+      #     SLACK_MESSAGE: 'PR test has been returning error!'
+
+      # - name: error notification to Slack
+      #   if: success()
+      #   uses: bryan-nice/slack-notification@master
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: times_kinoshita
+      #     SLACK_ICON: github
+      #     SLACK_USERNAME: Github Actions
+      #     SLACK_TITLE: 'PR Test has successed'
+      #     SLACK_MESSAGE: 'Test result has been returning error!'
