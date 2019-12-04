@@ -19,10 +19,8 @@ jobs:
 
       - name: run echo
         run: |
-          echo $my_env_var
-        env:
-          my_env_var: ${{ env.GITHUB_REF }}
-        shell: bash
+          echo ${GITHUB_SHA}
+        # shell: bash
 
       # - name: deployment pending
       #   uses: deliverybot/deployment-status@v1
