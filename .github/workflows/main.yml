@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  aws_cdk:
+  actions_poc:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
