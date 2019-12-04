@@ -19,7 +19,7 @@ jobs:
 
       - name: run echo
         run: |
-          echo ${GITHUB_SHA}
+          echo ${GITHUB_REF}
         # shell: bash
 
       # - name: deployment pending
