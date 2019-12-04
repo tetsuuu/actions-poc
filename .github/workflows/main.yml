@@ -21,7 +21,7 @@ jobs:
         run: |
           echo $my_env_var
         env:
-          my_env_var: ${{ GITHUB_REF }}
+          my_env_var: ${{ env.GITHUB_REF }}
         shell: bash
 
       # - name: deployment pending
