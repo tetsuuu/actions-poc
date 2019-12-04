@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - master
+      - staging
       - develop
 
 jobs:
@@ -13,8 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: run cat
-        run: cat README.md
+      # - name: run cat
+      #   run: cat README.md
+      #   shell: bash
+
+      - name: run echo
+        run: |
+          echo ${GITHUB_HEAD_REF}
         shell: bash
 
       # - name: deployment pending
@@ -43,18 +49,20 @@ jobs:
       #   env:
       #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       #     SLACK_CHANNEL: times_kinoshita
-      #     SLACK_ICON: github
+      #     SLACK_COLOR: '#cb2431'
+      #     SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
       #     SLACK_USERNAME: Github Actions
-      #     SLACK_TITLE: 'Github Actions Error'
+      #     SLACK_TITLE: PR Test ${GITHUB_REF}
       #     SLACK_MESSAGE: 'PR test has been returning error!'
 
-      # - name: error notification to Slack
+      # - name: succeed notification to Slack
       #   if: success()
       #   uses: bryan-nice/slack-notification@master
       #   env:
       #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       #     SLACK_CHANNEL: times_kinoshita
-      #     SLACK_ICON: github
+      #     SLACK_COLOR: '#3dc105'
+      #     SLACK_ICON: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?size=48'
       #     SLACK_USERNAME: Github Actions
-      #     SLACK_TITLE: 'PR Test has successed'
-      #     SLACK_MESSAGE: 'Test result has been returning error!'
+      #     SLACK_TITLE: PR Test ${GITHUB_REF}
+      #     SLACK_MESSAGE: Test result has been returning SUCCESS!
